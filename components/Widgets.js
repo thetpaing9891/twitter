@@ -1,7 +1,10 @@
 import { SearchIcon } from '@heroicons/react/outline'
 import React from 'react'
+import News from './News';
 
-export default function Widgets() {
+export default function Widgets({newResults}) {
+
+  const [articleNum, setArticleNum ] = React.useState(3)
   return (
     <div className='xl:w-[600px] hidden lg:inline ml-8 space-y-5'>
         <div className='w-[90%] xl:w-[75%] sticky top-0 bg-white py-1.5 z-50'>
@@ -11,8 +14,12 @@ export default function Widgets() {
             </div>
         </div>
 
-        <div className=''>
-
+        <div className='text-gray-700 space-y-3 bg-gray-100 rounded-xl pt-2 w-[90%] xl:w-[75%]'>
+          <h4 className='font-bold text-xl px-4'>What&apos;s happening</h4>
+          {newResults.slice(0,articleNum).map((article, index) => (
+            <News key={index} article={article} />
+          ) )}
+          <button onClick={ () => setArticleNum(articleNum + 3)} className='text-blue-300 pl-4 pb-3 hover:text-blue-400'>Show more</button>
         </div>
     </div>
   )
