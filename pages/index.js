@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Feeds from '../components/Feeds'
 import Sidebar from '../components/Sidebar'
+import Widgets from '../components/Widgets'
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
         <Feeds />
 
         {/* Widgets */}
+        <Widgets />
 
         {/* Modal */}
       </main>
