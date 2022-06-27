@@ -21,7 +21,7 @@ export default function Home(props) {
         <Feeds />
 
         {/* Widgets */}
-        <Widgets newResults={props.newResults.articles} />
+        <Widgets newResults={props.newResults.articles} randomUserResults={props.randomUserResults.results} />
 
         {/* Modal */}
       </main>
@@ -37,9 +37,15 @@ export async function getServerSideProps(){
     (res) => res.json()
   )
 
+  // Who the follow
+  const randomUserResults = await fetch('https://randomuser.me/api/?results=30&inc=name,login,picture').then(
+    (res) => res.json()
+  )
+
   return {
     props : {
-      newResults
+      newResults,
+      randomUserResults
     }
   }
 }
